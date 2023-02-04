@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+build:
+  artifacts:
+    - image: docker.io/akthrms/practice-skaffold
+      docker:
+        dockerfile: ./Dockerfile
+  tagPolicy:
+    dateTime: {}
+  local:
+    push: true
+deploy:
+  helm:
+    releases:
+      - name: practice-skaffold
+        chartPath: skaffold-helm
+        valuesFiles: [skaffold-helm/values.yaml]
+        artifactOverrides:
+          image: docker.io/akthrms/practice-skaffold

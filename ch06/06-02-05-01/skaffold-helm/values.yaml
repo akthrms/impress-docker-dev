@@ -1,0 +1,12 @@
+label: practice-skaffold
+
+replicas: 3
+
+image:
+  repository: docker.io/akthrms/
+  name: practice-skaffold
+
+imageConfig:
+  pullPolicy: IfNotPresent
+
+service_type: LoadBalancer
